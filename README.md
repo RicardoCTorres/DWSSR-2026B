@@ -1,4 +1,4 @@
-![Pleca itgam](/.github/assests/Pleca_itgam.jpg)
+![Pleca itgam](/.github/assests/pleca_itgam.jpg)
 
 # 🕷Desarollo de Plicaciones Web Server Side Rendering
 Proyecto de la materia de Desarrollo Web Server Side Rendering
