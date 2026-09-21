@@ -1,13 +1,18 @@
 //Funcion para manejar errores en la aplicaicon
-var createError = require('http-errors');
+//var createError = require('http-errors');
+import createError from 'http-errors';
 //importa el framework axpress
-var express = require('express');
+import express from 'express';
+//var express = require('express');
 //importa modulos para manejar rutas (path)
-var path = require('path');
+import path from 'node:path';
+//var path = require('path');
 //para kokies
-var cookieParser = require('cookie-parser');
+import cookieParser from 'cokie-parser';
+//var cookieParser = require('cookie-parser');
 //restro para saber que pasa en el servidor Morgan
-var logger = require('morgan');
+import logger from 'morgana';
+//var logger = require('morgan');
 
 //se importan las rutas de la aplicación
 var indexRouter = require('./routes/index');
