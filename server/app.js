@@ -5,7 +5,14 @@ import express from 'express';
 // Importa modulos para manejar rutas (path)
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import {dirname} from 'node:path'
+import {dirname} from 'node:path';
+
+//importando el template engine handlebars
+import hbs from 'hbs';
+
+//importando el registrador del helper
+import { registerViteHelper } from './lib/vite.js';
+
 // Para cookies
 import cookieParser from 'cookie-parser';
 // Registro para saber que pasa en el servidor (Morgan)
@@ -22,8 +29,6 @@ const debug =createDebug('dwssr-2026b:server');
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-
-
 // Crea la aplicacion de express
 debug("🔨creado back end");
 const app = express();
@@ -31,12 +36,18 @@ const app = express();
 // Configura el motor de vistas
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+registerViteHelper(hbs)
 
 // Configura los middlewares de la aplicacion
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+//archivos estaticos para producion
+if(process.env.NODE_ENV === 'production' ){
+  app.use(express.static(path.join(__dirname, '..', 'dist')));
+}
 
 // Configuracion de archivos estaticos
 debug("🔨Configuración de archivos estáticos");
