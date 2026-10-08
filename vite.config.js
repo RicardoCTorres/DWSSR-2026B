@@ -13,6 +13,8 @@ export default defineConfig({
     server:{
         //puerto de escucha del servidor de desarrollo
         port:5173, 
+        host: true, // Permite conexiones externas en el entorno de red
+        cors: true, // Habilita CORS para permitir solicitudes desde Express
         //rigidez del puerto
         strict: true
     } ,

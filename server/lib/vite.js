@@ -18,7 +18,7 @@ export function viteAssets(){
     //obtener modo de ejecucion
     const isDev = process.env.NODE_ENV !== 'production';
 // rescatando la url del servidor de desarooloo
-    const server = process.env.VITE_SERVER || 'http://localhost:5173';
+    const viteDevServer = process.env.VITE_SERVER || 'https://glorious-spork-7v9xxwjgp4543xjp6-5173.app.github.dev';
     if(isDev){
         //el desarollo cargamos los archivos del frontend directamente del servidor de desarrollo de vite
         return `
