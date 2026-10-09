@@ -9,7 +9,7 @@
     "greet": "echo 'hola mundo'",
     "dev:vite": "vite",
     "dev:all": "concurrently \"npm run dev\" \"npm run dev:vite\"",
-    "build": "vite build",
+    "build": "vite -- build",
     "preview": "npm run build && npm start"
   },
   "dependencies": {
