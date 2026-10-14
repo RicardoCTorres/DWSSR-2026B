@@ -4,6 +4,7 @@ const router = express.Router();
 let counter = 0;
 const numbers= []
 /* GET home page. */
+// eslint-disable-next-line
 router.get('/', function(req, res, next) {
   counter++;
   numbers.push(counter);

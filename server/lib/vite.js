@@ -3,6 +3,7 @@ import fs from 'node:fs'
 //viblioteca de rutas
 import path from 'node:path'
 import { fileURLToPath } from 'node:url';
+// eslint-disable-next-line
 import {dirname} from 'node:path';
 
 //creando variables de rutas
@@ -22,6 +23,7 @@ export function viteAssets(){
     if(isDev){
         //el desarollo cargamos los archivos del frontend directamente del servidor de desarrollo de vite
         return `
+        
         <script type="module" src="${viteDevServer}/@vite/client"></script>
         <script type="module" src="${viteDevServer}/main.js"></script>
         `

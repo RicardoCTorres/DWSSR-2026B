@@ -5,6 +5,7 @@ import express from 'express';
 // Importa modulos para manejar rutas (path)
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+// eslint-disable-next-line
 import {dirname} from 'node:path';
 
 //importando el template engine handlebars
@@ -64,7 +65,8 @@ app.use((req, res, next) => {
 });
 
 // Error handler
-app.use((err, req, res, next) => {
+
+app.use((err, req, res, _next) => {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
   res.status(err.status || 500);
