@@ -10,10 +10,10 @@
     "dev:vite": "vite",
     "dev:all": "concurrently \"npm run dev\" \"npm run dev:vite\"",
     "build": "vite build",
-    "lint:back":"eslint \"server/**/*.js\"",
-    "lint:all":"npm run lint:back && npm run lint:front",
-    "lint:front":"eslint \"src/**/*.js\"",
-    "lint:fix":"eslint . --fix",
+    "lint:back": "eslint \"server/**/*.js\"",
+    "lint:all": "npm run lint:back && npm run lint:front",
+    "lint:front": "eslint \"src/**/*.js\"",
+    "lint:fix": "eslint . --fix",
     "preview": "npm run build && npm start"
   },
   "dependencies": {
@@ -26,11 +26,13 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@tailwindcss/vite": "^4.3.3",
     "concurrently": "^10.0.5",
     "eslint": "^10.12.0",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^17.13.0",
     "nodemon": "^3.1.14",
+    "tailwindcss": "^4.3.3",
     "vite": "^8.3.2"
   },
   "imports": {
