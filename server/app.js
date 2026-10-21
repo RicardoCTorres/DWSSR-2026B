@@ -6,13 +6,12 @@ import express from 'express';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 // eslint-disable-next-line
-import {dirname} from 'node:path';
+import { dirname } from 'node:path';
 
 //importando el template engine handlebars
 import hbs from 'hbs';
 
 //importando el registrador del helper
-import { registerViteHelper } from './lib/vite.js';
 
 // Para cookies
 import cookieParser from 'cookie-parser';
@@ -24,20 +23,21 @@ import createDebug from 'debug';
 // Se importan las rutas de la aplicacion
 import indexRouter from '#routes/index.js';
 import usersRouter from '#routes/users.js';
+import { registerViteHelper } from './lib/vite.js';
 
 // Recreación de __dirname para ES Modules
-const debug =createDebug('dwssr-2026b:server');
+const debug = createDebug('dwssr-2026b:server');
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Crea la aplicacion de express
-debug("🔨creado back end");
+debug('🔨creado back end');
 const app = express();
 
 // Configura el motor de vistas
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-registerViteHelper(hbs)
+registerViteHelper(hbs);
 
 // Configura los middlewares de la aplicacion
 app.use(logger('dev'));
@@ -46,16 +46,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 //archivos estaticos para producion
-if(process.env.NODE_ENV === 'production' ){
+if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '..', 'dist')));
 }
 
 // Configuracion de archivos estaticos
-debug("🔨Configuración de archivos estáticos");
+debug('🔨Configuración de archivos estáticos');
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // Registramos las rutas
-debug("🖼 Registramos las rutas") ;
+debug('🖼 Registramos las rutas');
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
@@ -74,12 +74,12 @@ app.use((err, req, res, _next) => {
 });
 //ejemplo de codigo inlcanzable
 //(()=>{
-  //let age=10
-  
-  //if (age< 10) {
-    //console.log("age is less than 10")
-  //}
-  //return age
+//let age=10
+
+//if (age< 10) {
+//console.log("age is less than 10")
+//}
+//return age
 //})()
 
 //module.exports = app;

@@ -5,7 +5,6 @@
  */
 
 //var app = require('../app');
-import app from '../app.js';
 
 //var debug = require('debug')('dwssr-2026b:server');
 //importaando debug
@@ -13,9 +12,10 @@ import createDebug from 'debug';
 
 //var http = require('http');
 import http from 'node:http';
+import app from '../app.js';
 
 //crecion del objeto debug
-const debug =createDebug('dwssr-2026b:server');
+const debug = createDebug('dwssr-2026b:server');
 
 /**
  * Get port from environment and store in Express.
@@ -67,9 +67,10 @@ function onError(error) {
     throw error;
   }
 
-  const bind = typeof port === 'string'
-    ? `Pipe ${port}` //'Pipe ' + port
-    : `Port ${port}` //'Port ' + port;
+  const bind =
+    typeof port === 'string'
+      ? `Pipe ${port}` //'Pipe ' + port
+      : `Port ${port}`; //'Port ' + port;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
@@ -92,9 +93,9 @@ function onError(error) {
 
 function onListening() {
   const addr = server.address();
-  const bind = typeof addr === 'string'
-    ? `pipe ${addr}` //'pipe ' + addr
-
-    : `port ${addr.port}` //'port ' + addr.port;
+  const bind =
+    typeof addr === 'string'
+      ? `pipe ${addr}` //'pipe ' + addr
+      : `port ${addr.port}`; //'port ' + addr.port;
   debug(`💻Listening on  ${bind}`);
 }
