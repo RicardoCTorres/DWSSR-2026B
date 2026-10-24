@@ -1,10 +1,14 @@
 //flujo de archivos
 import fs from 'node:fs';
 //viblioteca de rutas
-import path from 'node:path';
+
 import { fileURLToPath } from 'node:url';
 // eslint-disable-next-line
-import { dirname } from 'node:path';
+import { dirname, path } from 'node:path';
+
+import createDebug from 'debug';
+
+const debug = createDebug('dwssr-2026b:server');
 
 //creando variables de rutas
 const __filename = fileURLToPath(import.meta.url);
@@ -35,7 +39,7 @@ export function viteAssets() {
 
   //si no existe el manifiesto
   if (!fs.existsSync(manifestPath)) {
-    console.warn('Vite Manifest not found. Run npm run build');
+    debug("Vite Manifest not found. Run npm run build");
     return '';
   }
   //lellendon y parcendo a json el archivo
@@ -46,7 +50,7 @@ export function viteAssets() {
   const mainEntry = manifest['main.js'];
   //guarda del main.js
   if (!mainEntry) {
-    console.warn('el archivo main.js no esta disponible enn el manifiesto de vite');
+    debug("el archivo main.js no esta disponible enn el manifiesto de vite");
     return '';
   }
   let tags = '';

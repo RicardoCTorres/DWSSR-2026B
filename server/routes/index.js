@@ -7,7 +7,7 @@ const numbers = [];
 /* GET home page. */
 // eslint-disable-next-line
 router.get('/', function (req, res, next) {
-  counter++;
+  counter += 1;
   numbers.push(counter);
   res.render('index', { title: 'Cruz Torres Ricardo', counter, numbers });
 });

@@ -3,10 +3,10 @@ import createError from 'http-errors';
 // Importa el framework express
 import express from 'express';
 // Importa modulos para manejar rutas (path)
-import path from 'node:path';
+
 import { fileURLToPath } from 'node:url';
 // eslint-disable-next-line
-import { dirname } from 'node:path';
+import { dirname, path } from 'node:path';
 
 //importando el template engine handlebars
 import hbs from 'hbs';
@@ -21,7 +21,9 @@ import logger from 'morgan';
 import createDebug from 'debug';
 
 // Se importan las rutas de la aplicacion
+// eslint-disable-next-line import-x/no-rename-default
 import indexRouter from '#routes/index.js';
+// eslint-disable-next-line import-x/no-rename-default
 import usersRouter from '#routes/users.js';
 import { registerViteHelper } from './lib/vite.js';
 

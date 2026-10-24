@@ -19,33 +19,12 @@ const debug = createDebug('dwssr-2026b:server');
 
 /**
  * Get port from environment and store in Express.
- */
-
-const port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
-
-/**
- * Create HTTP server.
- */
-
-const server = http.createServer(app);
-
-/**
- * Listen on provided port, on all network interfaces.
- */
-
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
-
-/**
- * Normalize a port into a number, string, or false.
- */
+**/
 
 function normalizePort(val) {
   const port = parseInt(val, 10);
 
-  if (isNaN(port)) {
+  if (Number.isNaN(port)) {
     // named pipe
     return val;
   }
@@ -58,7 +37,20 @@ function normalizePort(val) {
   return false;
 }
 
+const port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
+
 /**
+ * Create HTTP server.
+ */
+
+const server = http.createServer(app);
+
+/**
+ * Listen on provided port, on all network interfaces.
+
+ * Normalize a port into a number, string, or false.
+
  * Event listener for HTTP server "error" event.
  */
 
@@ -75,14 +67,14 @@ function onError(error) {
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
-      console.error(`${bind} requieres elevated privileges`);
+      debug(`${bind} requieres elevated privileges`);
       process.exit(1);
       break;
     case 'EADDRINUSE':
-      console.error(`${bind} is already in use`);
+      debug(`${bind} is already in use`);
       process.exit(1);
       break;
-    default:
+   default:
       throw error;
   }
 }
@@ -99,3 +91,7 @@ function onListening() {
       : `port ${addr.port}`; //'port ' + addr.port;
   debug(`💻Listening on  ${bind}`);
 }
+
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
