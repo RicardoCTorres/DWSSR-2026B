@@ -6,7 +6,7 @@ import express from 'express';
 
 import { fileURLToPath } from 'node:url';
 // eslint-disable-next-line
-import { dirname, path } from 'node:path';
+import path,{ dirname } from 'node:path';
 
 //importando el template engine handlebars
 import hbs from 'hbs';
