@@ -16,7 +16,7 @@ import hbs from 'hbs';
 // Para cookies
 import cookieParser from 'cookie-parser';
 // Registro para saber que pasa en el servidor (Morgan)
-import logger from 'morgan';
+import morgan from 'morgan';
 //importaando debug
 import createDebug from 'debug';
 
@@ -42,7 +42,7 @@ app.set('view engine', 'hbs');
 registerViteHelper(hbs);
 
 // Configura los middlewares de la aplicacion
-app.use(logger('dev'));
+app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
