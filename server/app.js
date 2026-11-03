@@ -6,7 +6,7 @@ import express from 'express';
 
 import { fileURLToPath } from 'node:url';
 // eslint-disable-next-line
-import path,{ dirname } from 'node:path';
+import path, { dirname } from 'node:path';
 
 //importando el template engine handlebars
 import hbs from 'hbs';
@@ -21,11 +21,13 @@ import morgan from 'morgan';
 import createDebug from 'debug';
 
 // Se importan las rutas de la aplicacion
-// eslint-disable-next-line import-x/no-rename-default
+ 
 import indexRouter from '#routes/index.js';
 // eslint-disable-next-line import-x/no-rename-default
 import usersRouter from '#routes/users.js';
 import { registerViteHelper } from './lib/vite.js';
+//importando wiston
+import logger from './lib/winston.js';
 
 // Recreación de __dirname para ES Modules
 const debug = createDebug('dwssr-2026b:server');
@@ -41,8 +43,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 registerViteHelper(hbs);
 
-// Configura los middlewares de la aplicacion
-app.use(morgan('dev'));
+// Configurar middlewares de la aplicacion
+app.use(morgan('dev', { stream: { write: (msg) => logger.info(msg.trim()) } }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
