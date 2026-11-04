@@ -2,12 +2,12 @@ import express from 'express';
 import logger from '../lib/winston.js';
 
 const indexRouter = express.Router();
-
+//ruta de la pagina
 let counter = 0;
 const numbers = [];
 /* GET home page. */
 // eslint-disable-next-line
-indexRouter.get('/', function (req, res, next) {
+indexRouter.get('/', function (req, res, _next) {
   counter += 1;
   numbers.push(counter);
   res.render('index', { title: 'Cruz Torres Ricardo', counter, numbers });
