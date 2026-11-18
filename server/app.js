@@ -20,7 +20,7 @@ import morgan from 'morgan';
 
 // Se importan las rutas de la aplicacion
 
-import indexRouter from '#routes/index.js';
+import homeRouter from '#routes/index.js';
 // eslint-disable-next-line import-x/no-rename-default
 import usersRouter from '#routes/users.js';
 //import { registerViteHelper } from './lib/vite.js';
@@ -61,7 +61,7 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 // Registramos las rutas
 //debug('🖼 Registramos las rutas');
 logger.debug('🖼 Registramos las rutas');
-app.use('/', indexRouter);
+app.use('/', homeRouter);
 app.use('/users', usersRouter);
 
 // Catch 404 and forward to error handler
